@@ -235,8 +235,8 @@ function Index() {
         </div>
       </section>
 
-      <div className="w-full lg:bg-[url('data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Ccircle%20cx=%222%22%20cy=%222%22%20r=%222%22%20fill=%22%23C9A227%22%20fill-opacity=%220.6%22/%3E%3C/svg%3E')] lg:py-8 lg:mt-6">
-        <div className="md:max-w-5xl md:mx-auto md:px-8 lg:bg-brand-cream lg:px-12 lg:pb-12 lg:pt-4 lg:shadow-[0_0_40px_rgba(0,0,0,0.02)] lg:rounded-3xl">
+      <div className="w-full lg:bg-[url('data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Ccircle%20cx=%222%22%20cy=%222%22%20r=%222%22%20fill=%22%23C9A227%22%20fill-opacity=%220.6%22/%3E%3C/svg%3E')]">
+        <div className="md:max-w-5xl md:mx-auto md:px-8 lg:bg-brand-cream lg:px-12 lg:pb-12 lg:pt-8 lg:shadow-[0_4px_40px_rgba(0,0,0,0.02)]">
           {/* OUR PROMISE */}
         <section id="services" className="px-4 pt-3 pb-6 md:pt-16 md:pb-12 text-center md:text-left scroll-mt-16">
           <div className="md:flex md:items-center md:gap-16">
