@@ -19,6 +19,10 @@ import {
   Phone,
   Instagram,
   Facebook,
+  HeartHandshake,
+  Briefcase,
+  Sparkles,
+  Globe,
 } from "lucide-react";
 import heroTable from "@/assets/hero-cake.jpg";
 import promiseTent from "@/assets/promise-tent.jpg";
@@ -78,6 +82,61 @@ const gallery = [
   { img: catDj, label: "DJ Party" },
   { img: catCatering, label: "Catering" },
   { img: catBridal, label: "Bridal" },
+];
+
+const detailedServices = [
+  {
+    title: "Social & Family Milestone Events",
+    icon: HeartHandshake,
+    items: [
+      "Weddings & Pre-Wedding Ceremonies (Haldi, Mehendi, Sangeet, Reception)",
+      "Engagements & Roka Ceremonies",
+      "Anniversary Galas & Re-Wedding Rituals (Shashti Poorthi / 60th Birthdays)",
+      "Milestone Birthday Parties (1st birthdays, Sweet 16, Silver Jubilees)",
+      "Baby Showers & Traditional Functions (Godh Bharai / Seemantham)",
+      "Newborn Naming Ceremonies (Namakarana)",
+      "Childhood Milestone Events (Mundan / Head Shaving Ceremonies)",
+      "Coming-of-Age & Thread Ceremonies (Upanayana / Janeu / Half-Saree Functions)"
+    ]
+  },
+  {
+    title: "Corporate & Business Events",
+    icon: Briefcase,
+    items: [
+      "Grand Launch & Inauguration Ceremonies (Office, Store, or Showroom)",
+      "Auspicious Muhurat & Pooja Events (Bhoomi Pooja, Griha Pravesh)",
+      "Corporate Festival Celebrations (Diwali Parties, Eid Luncheons, Christmas)",
+      "Annual Award Functions & Gala Nights",
+      "Corporate Team Building & Offsite Meets",
+      "Product Launches & Press Conferences",
+      "Exhibitions, Trade Fairs, and Business Expos"
+    ]
+  },
+  {
+    title: "Seasonal & Cultural Festival Events",
+    icon: Sparkles,
+    items: [
+      "Diwali & Dussehra Grand Galas (Card Parties, Pandal Management, Society)",
+      "Holi Rain Dance & Color Parties",
+      "Navratri Garba & Dandiya Nights",
+      "Ganesh Chaturthi & Durga Puja Mandap Management",
+      "Eid Milans & Community Feasts",
+      "Christmas Eve Parties & New Year Bashes",
+      "Harvest Festival Celebrations (Pongal, Onam Sadya, Baisakhi, Lohri Events)"
+    ]
+  },
+  {
+    title: "Large-Scale Public & Community Events",
+    icon: Globe,
+    items: [
+      "Cultural Music & Dance Concerts",
+      "Community Melas, Flea Markets, & Food Festivals",
+      "Fashion Shows & Pageants",
+      "College Fests & Talent Showcases",
+      "Charity Galas & Fundraising Events",
+      "Marathons, Sports Days, & Fitness Events"
+    ]
+  }
 ];
 
 
@@ -176,8 +235,9 @@ function Index() {
         </div>
       </section>
 
-      <div className="md:max-w-5xl md:mx-auto md:px-8">
-        {/* OUR PROMISE */}
+      <div className="w-full lg:bg-[url('data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Ccircle%20cx=%222%22%20cy=%222%22%20r=%222%22%20fill=%22%23C9A227%22%20fill-opacity=%220.6%22/%3E%3C/svg%3E')] lg:py-8 lg:mt-6">
+        <div className="md:max-w-5xl md:mx-auto md:px-8 lg:bg-brand-cream lg:px-12 lg:pb-12 lg:pt-4 lg:shadow-[0_0_40px_rgba(0,0,0,0.02)] lg:rounded-3xl">
+          {/* OUR PROMISE */}
         <section id="services" className="px-4 pt-3 pb-6 md:pt-16 md:pb-12 text-center md:text-left scroll-mt-16">
           <div className="md:flex md:items-center md:gap-16">
             <div className="md:flex-1">
@@ -237,6 +297,46 @@ function Index() {
               ))}
             </div>
           </div>
+        </section>
+
+        {/* DETAILED SERVICES */}
+        <section id="detailed-services" className="px-4 pt-8 md:pt-12 scroll-mt-16">
+          <div className="text-center md:mb-10 mb-6">
+            <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold md:text-xs">
+              ✦ What We Do ✦
+            </p>
+            <h2 className="mt-2 font-display text-xl leading-tight text-brand-green-deep md:text-4xl md:mt-3">
+              Our Expertise Across All Events
+            </h2>
+          </div>
+          <Carousel opts={{ align: "start", loop: false }} className="w-full md:max-w-5xl md:mx-auto">
+            <CarouselContent className="-ml-4">
+              {detailedServices.map((cat, index) => (
+                <CarouselItem key={index} className="basis-[90%] pl-4 sm:basis-1/2 lg:basis-1/2">
+                  <div className="h-full rounded-2xl border border-brand-gold/30 bg-white p-5 md:p-8 shadow-sm transition-shadow hover:shadow-md group">
+                    <div className="flex items-center gap-3 mb-4 md:mb-6 border-b border-brand-gold/20 pb-4">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-green-deep/5 text-brand-green-deep group-hover:bg-brand-gold/10 transition-colors md:h-12 md:w-12">
+                        <cat.icon className="h-5 w-5 md:h-6 md:w-6" strokeWidth={1.5} />
+                      </span>
+                      <h3 className="font-display text-base md:text-xl text-brand-green-deep font-semibold">
+                        {cat.title}
+                      </h3>
+                    </div>
+                    <ul className="space-y-2 md:space-y-3">
+                      {cat.items.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-[11px] md:text-sm text-brand-charcoal leading-relaxed">
+                          <span className="mt-1 block h-1.5 w-1.5 shrink-0 rounded-full bg-brand-gold/80" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-12 h-10 w-10 border-brand-gold/60 bg-brand-cream text-brand-green-deep hover:bg-brand-gold hover:text-white" />
+            <CarouselNext className="hidden md:flex -right-12 h-10 w-10 border-brand-gold/60 bg-brand-cream text-brand-green-deep hover:bg-brand-gold hover:text-white" />
+          </Carousel>
         </section>
 
         {/* ABOUT & PACKAGES (Side by side on desktop) */}
@@ -390,6 +490,7 @@ function Index() {
             </a>
           </div>
         </section>
+      </div>
       </div>
 
       {/* FOOTER */}
