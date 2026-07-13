@@ -41,7 +41,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
+import { PlanEventDialog } from "@/components/PlanEventDialog";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -209,13 +209,12 @@ function Index() {
               <p className="max-w-[13.5rem] flex-1 text-[11px] leading-relaxed text-brand-cream/90 sm:max-w-[15.5rem] sm:text-[13px] md:max-w-lg md:text-base lg:text-lg">
                 From elegant celebrations to grand corporate events — we bring your vision to life.
               </p>
-              <button
-                onClick={() => document.getElementById("plan-event")?.scrollIntoView({ behavior: "smooth" })}
-                className="ml-[1cm] inline-flex h-7 shrink-0 items-center gap-1.5 rounded-full bg-brand-gold px-2.5 text-[8px] font-bold uppercase tracking-widest text-brand-green-deep shadow-lg shadow-black/30 transition hover:brightness-110 sm:h-9 sm:px-3 sm:text-[9px] md:ml-0 md:h-12 md:px-8 md:text-sm md:gap-2"
-              >
-                <Calendar className="h-3 w-3 md:h-4 md:w-4" strokeWidth={2.5} />
-                Plan Event
-              </button>
+              <PlanEventDialog>
+                <button className="ml-[1cm] inline-flex h-7 shrink-0 items-center gap-1.5 rounded-full bg-brand-gold px-2.5 text-[8px] font-bold uppercase tracking-widest text-brand-green-deep shadow-[0_0_15px_rgba(201,162,39,0.6)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(201,162,39,0.9)] hover:brightness-110 sm:h-9 sm:px-3 sm:text-[9px] md:ml-0 md:h-12 md:px-8 md:text-sm md:gap-2">
+                  <Calendar className="h-3 w-3 md:h-4 md:w-4" strokeWidth={2.5} />
+                  Plan Event
+                </button>
+              </PlanEventDialog>
             </div>
           </div>
         </div>
