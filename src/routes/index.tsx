@@ -42,6 +42,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { PlanEventDialog } from "@/components/PlanEventDialog";
+import { SlideToPlanButton } from "@/components/SlideToPlanButton";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -157,7 +158,7 @@ function Index() {
     <div className="min-h-screen bg-brand-cream font-sans text-foreground">
       {/* HERO */}
       <section className="relative bg-brand-cream">
-        <div className="relative h-[clamp(220px,28vh,260px)] overflow-hidden bg-brand-green-deep text-brand-cream sm:h-[clamp(340px,45vh,390px)] md:h-[55vh] lg:h-[65vh]">
+        <div className="relative min-h-[280px] overflow-hidden bg-brand-green-deep text-brand-cream sm:h-[clamp(380px,48vh,430px)] md:h-[55vh] lg:h-[65vh]">
           {/* Image banner */}
           <div className="pointer-events-none absolute inset-0">
             <img
@@ -197,7 +198,7 @@ function Index() {
           </header>
 
           {/* Hero content */}
-          <div className="absolute left-5 right-5 top-[4.35rem] z-10 sm:top-[5.75rem] md:left-1/2 md:top-[60%] lg:top-[55%] md:-translate-x-1/2 md:-translate-y-1/2 md:flex md:w-full md:max-w-4xl md:flex-col md:items-center md:text-center md:px-4">
+          <div className="relative px-5 pt-4 pb-4 z-10 sm:absolute sm:px-0 sm:pt-0 sm:pb-0 sm:left-5 sm:right-5 sm:top-[5.75rem] md:left-1/2 md:top-[60%] lg:top-[55%] md:-translate-x-1/2 md:-translate-y-1/2 md:flex md:w-full md:max-w-4xl md:flex-col md:items-center md:text-center md:px-4">
             <h1 className="font-display text-[1.72rem] leading-[1.03] tracking-tight min-[380px]:text-[1.92rem] sm:text-[2.45rem] md:text-[3.5rem] lg:text-[4.5rem]">
               <span className="block font-normal text-brand-cream">You Dream It</span>
               <span className="block font-normal text-brand-gold md:mt-2">We Plan It</span>
@@ -205,16 +206,11 @@ function Index() {
 
             <div className="mt-2 sm:mt-4 md:mt-8 md:flex md:justify-center w-full"><GoldDivider /></div>
 
-            <div className="mt-2 flex items-end gap-2 sm:mt-4 md:mt-8 md:flex-col md:items-center md:gap-6">
-              <p className="max-w-[13.5rem] flex-1 text-[11px] leading-relaxed text-brand-cream/90 sm:max-w-[15.5rem] sm:text-[13px] md:max-w-lg md:text-base lg:text-lg">
+            <div className="mt-4 flex flex-col items-start gap-4 md:mt-8 md:items-center md:gap-6">
+              <p className="max-w-[18rem] text-[12px] leading-relaxed text-brand-cream/90 sm:max-w-sm sm:text-[14px] md:max-w-lg md:text-base lg:text-lg">
                 From elegant celebrations to grand corporate events — we bring your vision to life.
               </p>
-              <PlanEventDialog>
-                <button className="ml-[1cm] inline-flex h-7 shrink-0 items-center gap-1.5 rounded-full bg-brand-gold px-2.5 text-[8px] font-bold uppercase tracking-widest text-brand-green-deep shadow-[0_0_15px_rgba(201,162,39,0.6)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(201,162,39,0.9)] hover:brightness-110 sm:h-9 sm:px-3 sm:text-[9px] md:ml-0 md:h-12 md:px-8 md:text-sm md:gap-2">
-                  <Calendar className="h-3 w-3 md:h-4 md:w-4" strokeWidth={2.5} />
-                  Plan Event
-                </button>
-              </PlanEventDialog>
+              <SlideToPlanButton className="ml-8 w-[260px] sm:ml-0 sm:w-full md:w-full" />
             </div>
           </div>
         </div>
@@ -224,14 +220,23 @@ function Index() {
       <div className="w-full lg:bg-[url('data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Ccircle%20cx=%222%22%20cy=%222%22%20r=%222%22%20fill=%22%23C9A227%22%20fill-opacity=%220.6%22/%3E%3C/svg%3E')]">
         <section className="-mt-px relative z-20">
           <div className="gold-shine grid grid-cols-4 gap-0 bg-brand-gold px-0 py-0.5 md:py-4 md:max-w-3xl md:mx-auto md:rounded-b-2xl md:shadow-lg">
-            {services.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center justify-center gap-0.5 px-1 text-center md:gap-2">
-                <Icon className="h-2 w-2 text-brand-green-deep md:h-6 md:w-6" strokeWidth={2} />
-                <span className="whitespace-pre-line text-[6px] font-semibold uppercase tracking-wider text-brand-green-deep leading-[1.05] md:text-[10px] lg:text-xs">
-                  {label}
-                </span>
-              </div>
-            ))}
+            {services.map(({ icon: Icon, label }) => {
+              let mappedEvent = "Other";
+              if (label.includes("Weddings")) mappedEvent = "Wedding";
+              if (label.includes("Birthdays")) mappedEvent = "Birthday";
+              if (label.includes("College")) mappedEvent = "College Fest";
+              
+              return (
+                <PlanEventDialog key={label} defaultEventType={mappedEvent}>
+                  <button className="flex flex-col items-center justify-center gap-0.5 px-1 py-1 text-center md:gap-2 hover:scale-110 transition-transform duration-300 outline-none rounded-lg">
+                    <Icon className="h-2 w-2 text-brand-green-deep md:h-6 md:w-6" strokeWidth={2} />
+                    <span className="whitespace-pre-line text-[6px] font-semibold uppercase tracking-wider text-brand-green-deep leading-[1.05] md:text-[10px] lg:text-xs">
+                      {label}
+                    </span>
+                  </button>
+                </PlanEventDialog>
+              );
+            })}
           </div>
         </section>
 
