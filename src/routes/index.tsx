@@ -24,15 +24,16 @@ import {
   Sparkles,
   Globe,
 } from "lucide-react";
-import heroTable from "@/assets/hero-cake.jpg";
+import heroWedding from "@/assets/hero-wedding.png";
 import promiseTent from "@/assets/promise-tent.jpg";
 import catBirthday from "@/assets/cat-birthday.jpg";
 import catMarriage from "@/assets/cat-marriage.jpg";
 import catCollege from "@/assets/cat-college.jpg";
-import catSchool from "@/assets/cat-school.jpg";
+import catSchool from "@/assets/south-indian-school.png";
 import catDj from "@/assets/cat-dj.jpg";
 import catCatering from "@/assets/cat-catering.jpg";
 import catBridal from "@/assets/cat-bridal.jpg";
+import catPhotography from "@/assets/cat-photography.png";
 import logo from "@/assets/logo.png";
 import {
   Carousel,
@@ -83,6 +84,7 @@ const gallery = [
   { img: catDj, label: "DJ Party" },
   { img: catCatering, label: "Catering" },
   { img: catBridal, label: "Bridal" },
+  { img: catPhotography, label: "Photography" },
 ];
 
 const detailedServices = [
@@ -90,6 +92,7 @@ const detailedServices = [
     title: "Social & Family Milestone Events",
     icon: HeartHandshake,
     items: [
+      "Premium Catering Services",
       "Weddings & Pre-Wedding Ceremonies (Haldi, Mehendi, Sangeet, Reception)",
       "Engagements & Roka Ceremonies",
       "Anniversary Galas & Re-Wedding Rituals (Shashti Poorthi / 60th Birthdays)",
@@ -162,9 +165,9 @@ function Index() {
           {/* Image banner */}
           <div className="pointer-events-none absolute inset-0">
             <img
-              src={heroTable}
-              alt="Elegant event table setup"
-              className="h-full w-full object-cover object-[64%_center]"
+              src={heroWedding}
+              alt="Elegant wedding setup"
+              className="h-full w-full object-cover translate-x-[2cm] scale-110"
               width={1200}
               height={1600}
             />
@@ -210,7 +213,7 @@ function Index() {
               <p className="max-w-[18rem] text-[12px] leading-relaxed text-brand-cream/90 sm:max-w-sm sm:text-[14px] md:max-w-lg md:text-base lg:text-lg">
                 From elegant celebrations to grand corporate events — we bring your vision to life.
               </p>
-              <SlideToPlanButton className="ml-8 w-[260px] sm:ml-0 sm:w-full md:w-full" />
+              <SlideToPlanButton className="sm:ml-0" />
             </div>
           </div>
         </div>
@@ -500,9 +503,14 @@ function Index() {
         </div>
 
         <div className="md:max-w-5xl md:mx-auto">
-          <p className="mt-8 md:mt-12 text-center md:text-left text-[11px] md:text-xs text-brand-cream/50 pt-4 md:border-t md:border-brand-cream/10">
-            © {new Date().getFullYear()} Happy Events. All rights reserved.
-          </p>
+          <div className="mt-8 md:mt-12 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] md:text-xs text-brand-cream/50 pt-4 md:border-t md:border-brand-cream/10">
+            <p>
+              © {new Date().getFullYear()} Happy Events. All rights reserved.
+            </p>
+            <p>
+              Made with <a href="https://c-entrepreneurs.netlify.app/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors underline decoration-brand-cream/30 hover:decoration-brand-gold">c-entrepreneurs</a>
+            </p>
+          </div>
         </div>
       </footer>
 
