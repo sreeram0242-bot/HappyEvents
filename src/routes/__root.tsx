@@ -82,6 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: SEO_DATA.description },
       { name: "keywords", content: SEO_DATA.keywords },
       { name: "google-site-verification", content: SEO_DATA.googleVerification },
+      { name: "google-site-verification", content: "41ee6d09a45fb360" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { name: "author", content: "Happy Events Karur — Vijay" },
       { name: "geo.region", content: "IN-TN" },
