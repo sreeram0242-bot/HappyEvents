@@ -262,7 +262,7 @@ function Index() {
 
             <div className="mt-4 flex flex-col items-start gap-4 md:mt-8 md:items-center md:gap-6">
               <p className="max-w-[18rem] text-[12px] leading-relaxed text-brand-cream/90 sm:max-w-sm sm:text-[14px] md:max-w-lg md:text-base lg:text-lg">
-                From elegant celebrations to grand corporate events — we bring your vision to life.
+                Karur’s premier event management company — crafting memorable weddings, college fests, birthday parties & celebrations across Karur and Tamil Nadu.
               </p>
               <SlideToPlanButton className="sm:ml-0" />
             </div>
@@ -302,7 +302,7 @@ function Index() {
                 ✦ Our Service ✦
               </p>
               <h2 className="mt-1 font-display text-lg text-brand-green-deep md:text-3xl">
-                Moments We've Crafted
+                Moments We've Crafted Across Karur
               </h2>
             </div>
             <Carousel opts={{ align: "start", loop: true }} className="w-full">
@@ -312,7 +312,7 @@ function Index() {
                     <div className="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer">
                       <img
                         src={g.img}
-                        alt={g.label}
+                        alt={`Happy Events Karur — ${g.label} planning and decor`}
                         loading="lazy"
                         width={1200}
                         height={800}
@@ -358,7 +358,7 @@ function Index() {
                 ✦ What We Do ✦
               </p>
               <h2 className="mt-2 font-display text-xl leading-tight text-brand-green-deep md:text-4xl md:mt-3">
-                Our Expertise Across All Events
+                Our Event Management Services in Karur
               </h2>
             </div>
             <Carousel opts={{ align: "start", loop: false }} className="w-full md:max-w-5xl md:mx-auto">
@@ -402,8 +402,8 @@ function Index() {
                 Led by Vijay. <br className="hidden md:block" /> Powered by Passion.
               </h2>
               <p className="mx-auto mt-3 max-w-sm md:mx-0 md:max-w-none text-[11px] md:text-sm leading-relaxed text-brand-charcoal md:mt-5">
-                Happy Events is an owner-run event management service crafting weddings,
-                college fests, birthdays and celebrations of every scale — with{" "}
+                Happy Events is Karur's trusted owner-run event management service crafting weddings,
+                college fests, birthdays and celebrations of every scale across Karur, Trichy, Namakkal, Erode and Tamil Nadu — with{" "}
                 <span className="font-semibold text-brand-green-deep">Food & Decoration</span>{" "}
                 as our signature pillars.
               </p>
@@ -478,7 +478,62 @@ function Index() {
             </div>
           </section>
 
+          {/* FAQ SECTION - FOR KARUR LOCAL SEARCH & RICH SNIPPETS */}
+          <section id="faq" className="px-4 pt-6 md:pt-10 scroll-mt-16">
+            <div className="rounded-2xl bg-white p-5 md:p-10 shadow-md md:max-w-4xl md:mx-auto border-t-2 border-brand-gold/40">
+              <div className="text-center mb-6 md:mb-8">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold md:text-xs">
+                  ✦ Frequently Asked Questions ✦
+                </p>
+                <h2 className="mt-1 font-display text-lg text-brand-green-deep md:text-3xl md:mt-3">
+                  Event Management in Karur — FAQs
+                </h2>
+                <p className="mt-1 text-[11px] md:text-sm text-brand-charcoal/80 max-w-xl mx-auto">
+                  Everything you need to know about planning your next wedding, birthday, college fest, or celebration with Happy Events.
+                </p>
+              </div>
 
+              <div className="space-y-3 md:space-y-4">
+                {[
+                  {
+                    q: "Why is Happy Events the best event management company in Karur?",
+                    a: "Happy Events is Karur's leading event management service led personally by Vijay. We combine flawless coordination with our signature pillars of gourmet Food Catering and bespoke Stage Decoration, tailored for events of any budget.",
+                  },
+                  {
+                    q: "What types of events do Happy Events manage in Karur?",
+                    a: "We organize grand weddings, reception ceremonies, traditional South Indian functions (Haldi, Mehendi, Seemantham, Upanayana), milestone birthday parties, college fests, corporate showroom inaugurations, and DJ live concerts.",
+                  },
+                  {
+                    q: "Do you provide catering and decoration services across Karur?",
+                    a: "Yes! Authentic South Indian & multi-cuisine catering, live cooking counters, exquisite flower stage decoration, entrance arches, LED screens, and concert-grade sound & lighting are all managed in-house.",
+                  },
+                  {
+                    q: "Do Happy Events take up events outside Karur district?",
+                    a: "Absolutely. While headquartered in Karur, we regularly execute grand destination weddings and celebrations across Trichy, Namakkal, Erode, Dindigul, and throughout Tamil Nadu.",
+                  },
+                  {
+                    q: "How can I get a quote or book my event in Karur?",
+                    a: "You can click 'Plan Your Event' on our website, call +91 96266 10819 directly, or send us a WhatsApp message. We provide an itemized, transparent quotation tailored to your guest count.",
+                  },
+                ].map(({ q, a }, idx) => (
+                  <details
+                    key={idx}
+                    className="group rounded-xl border border-brand-gold/20 bg-brand-cream/20 p-3.5 md:p-5 transition hover:border-brand-gold"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between font-display text-sm md:text-base font-semibold text-brand-green-deep">
+                      <span>{q}</span>
+                      <span className="ml-2 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-gold/20 text-brand-gold text-xs transition group-open:rotate-180">
+                        ▼
+                      </span>
+                    </summary>
+                    <p className="mt-2 text-[11px] md:text-sm leading-relaxed text-brand-charcoal pt-2 border-t border-brand-gold/10">
+                      {a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
 
           {/* CTA CARD */}
           <section id="contact" className="px-4 pt-4 pb-8 md:pt-10 md:pb-20 scroll-mt-16 md:max-w-4xl md:mx-auto">

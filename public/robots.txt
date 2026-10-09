@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://happyevents.com/sitemap.xml
+Sitemap: https://happyeventskarur.com/sitemap.xml
+Host: https://happyeventskarur.com

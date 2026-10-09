@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportAppError } from "../lib/error-reporting";
+import { SEO_DATA, LOCAL_BUSINESS_SCHEMA, FAQ_SCHEMA } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -77,21 +78,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Happy Events — Premium Event Management & Planners" },
-      { name: "description", content: "Happy Events is a premium event management company crafting elegant weddings, corporate events, college fests, and unforgettable private parties. We bring your vision to life." },
-      { name: "keywords", content: "event management, wedding planner, corporate events, party planning, luxury events, catering, event decorators, professional event organizers" },
-      { name: "robots", content: "index, follow" },
-      { name: "author", content: "Happy Events" },
-      { property: "og:title", content: "Happy Events — Premium Event Management & Planners" },
-      { property: "og:description", content: "Crafting elegant weddings, corporate events, and unforgettable private parties." },
-      { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Happy Events" },
+      { title: SEO_DATA.title },
+      { name: "description", content: SEO_DATA.description },
+      { name: "keywords", content: SEO_DATA.keywords },
+      { name: "google-site-verification", content: SEO_DATA.googleVerification },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "author", content: "Happy Events Karur — Vijay" },
+      { name: "geo.region", content: "IN-TN" },
+      { name: "geo.placename", content: "Karur, Tamil Nadu, India" },
+      { name: "geo.position", content: "10.9601;78.0766" },
+      { name: "ICBM", content: "10.9601, 78.0766" },
+      { property: "og:title", content: SEO_DATA.title },
+      { property: "og:description", content: SEO_DATA.description },
+      { property: "og:type", content: "business.business" },
+      { property: "og:site_name", content: SEO_DATA.siteName },
+      { property: "og:url", content: SEO_DATA.url },
+      { property: "og:image", content: `${SEO_DATA.url}/favicon.png` },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Happy Events" },
-      { name: "twitter:description", content: "We bring your vision to life. Elegant weddings, corporate events, and celebrations." },
+      { name: "twitter:title", content: SEO_DATA.title },
+      { name: "twitter:description", content: SEO_DATA.description },
+      { name: "twitter:image", content: `${SEO_DATA.url}/favicon.png` },
     ],
     links: [
-      { rel: "canonical", href: "https://happyevents.com" },
+      { rel: "canonical", href: SEO_DATA.url },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
@@ -112,6 +122,18 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(FAQ_SCHEMA),
+          }}
+        />
       </head>
       <body>
         {children}
