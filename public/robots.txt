@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://happyeventskarur.com/sitemap.xml
-Host: https://happyeventskarur.com
+Sitemap: https://happyeventskarur.netlify.app/sitemap.xml

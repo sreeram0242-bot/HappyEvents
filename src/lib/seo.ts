@@ -8,7 +8,7 @@ export const SEO_DATA = {
   tagline: "Premier Event Management & Wedding Planning in Karur, Tamil Nadu",
   description:
     "Happy Events is Karur's #1 event management service led by Vijay. Specializing in luxury weddings, college fests, birthdays, stage decoration, authentic catering, and corporate events in Karur, Trichy, Erode, and Tamil Nadu. Call +91 96266 10819 for quotes.",
-  url: "https://happyeventskarur.com",
+  url: "https://happyeventskarur.netlify.app",
   keywords: [
     "happy events",
     "happy events karur",
