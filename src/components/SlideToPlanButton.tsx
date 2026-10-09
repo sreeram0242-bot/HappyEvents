@@ -17,7 +17,7 @@ export function SlideToPlanButton({ className }: { className?: string }) {
           className
         )}
       >
-        <span className="text-[11px] md:text-[12px] font-normal uppercase tracking-normal text-brand-green-deep whitespace-nowrap">
+        <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-wider text-brand-green-deep whitespace-nowrap">
           Plan your event
         </span>
         <Calendar className="h-3.5 w-3.5 md:h-4 md:w-4 text-brand-green-deep shrink-0" strokeWidth={2.5} />

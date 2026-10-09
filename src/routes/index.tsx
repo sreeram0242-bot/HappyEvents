@@ -157,10 +157,31 @@ function GoldDivider() {
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    if (target === "#top" || target === "#" || target === "") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      try {
+        window.history.pushState(null, "", window.location.pathname);
+      } catch {}
+      return;
+    }
+    const id = target.replace("#", "");
+    const targetEl =
+      document.getElementById(id) ||
+      document.getElementById(id === "contact" ? "plan-event" : id === "plan-event" ? "contact" : id);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      try {
+        window.history.pushState(null, "", `#${id}`);
+      } catch {}
+    }
+  };
+
   return (
     <div className="min-h-screen bg-brand-cream font-sans text-foreground">
       {/* HERO */}
-      <section className="relative bg-brand-cream">
+      <section id="top" className="relative bg-brand-cream">
         <div className="relative min-h-[280px] overflow-hidden bg-brand-green-deep text-brand-cream sm:h-[clamp(380px,48vh,430px)] md:h-[55vh] lg:h-[65vh]">
           {/* Image banner */}
           <div className="pointer-events-none absolute inset-0">
@@ -176,19 +197,49 @@ function Index() {
           </div>
 
           {/* Nav */}
-          <header className="relative z-20 flex items-start justify-between px-5 pt-4 sm:pt-5 md:px-12 lg:px-24 md:pt-6 md:max-w-7xl md:mx-auto">
-            <div className="flex items-center gap-2 md:-translate-x-[2cm]">
+          <header className="relative z-20 flex items-center justify-between px-5 pt-4 sm:pt-5 md:px-12 lg:px-24 md:pt-6 md:max-w-7xl md:mx-auto">
+            <div className="flex items-center gap-2 md:-translate-x-[1.5cm]">
               <img src={logo} alt="Happy Events" className="h-12 w-auto drop-shadow sm:h-16 md:h-20" />
               <span className="font-display text-brand-gold whitespace-nowrap text-lg sm:text-xl md:text-3xl mt-1">Happy Events</span>
             </div>
 
             {/* Desktop Tabs */}
-            <nav className="hidden md:flex items-center gap-8 lg:gap-12 pt-2 md:pt-4 md:-translate-y-[1cm] md:translate-x-[3cm]">
-              <a href="#" className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors">HOME</a>
-              <a href="#services" className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors">SERVICES</a>
-              <a href="#about" className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors">ABOUT</a>
-              <a href="#gallery" className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors">GALLERY</a>
-              <a href="#plan-event" className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors">CONTACT</a>
+            <nav className="hidden md:flex items-center gap-6 lg:gap-10 md:translate-x-[1.5cm]">
+              <a
+                href="#top"
+                onClick={(e) => handleNavClick(e, "#top")}
+                className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors cursor-pointer py-1"
+              >
+                HOME
+              </a>
+              <a
+                href="#services"
+                onClick={(e) => handleNavClick(e, "#services")}
+                className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors cursor-pointer py-1"
+              >
+                SERVICES
+              </a>
+              <a
+                href="#about"
+                onClick={(e) => handleNavClick(e, "#about")}
+                className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors cursor-pointer py-1"
+              >
+                ABOUT
+              </a>
+              <a
+                href="#gallery"
+                onClick={(e) => handleNavClick(e, "#gallery")}
+                className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors cursor-pointer py-1"
+              >
+                GALLERY
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="font-display text-brand-cream hover:text-brand-gold text-sm lg:text-base tracking-wider transition-colors cursor-pointer py-1"
+              >
+                CONTACT
+              </a>
             </nav>
 
             <button
@@ -301,7 +352,7 @@ function Index() {
           </section>
 
           {/* DETAILED SERVICES */}
-          <section id="detailed-services" className="px-4 pt-8 md:pt-12 scroll-mt-16">
+          <section id="services" className="px-4 pt-8 md:pt-12 scroll-mt-16">
             <div className="text-center md:mb-10 mb-6">
               <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold md:text-xs">
                 ✦ What We Do ✦
@@ -430,7 +481,7 @@ function Index() {
 
 
           {/* CTA CARD */}
-          <section id="plan-event" className="px-4 pt-4 pb-8 md:pt-10 md:pb-20 scroll-mt-16 md:max-w-4xl md:mx-auto">
+          <section id="contact" className="px-4 pt-4 pb-8 md:pt-10 md:pb-20 scroll-mt-16 md:max-w-4xl md:mx-auto">
             <div className="flex items-center gap-3 rounded-2xl bg-white px-3 py-4 shadow-md md:px-8 md:py-10 md:flex-row md:justify-between border-t-4 border-brand-gold">
               <div className="flex items-center gap-3 md:gap-6 flex-1">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand-gold/60 md:h-16 md:w-16 bg-brand-cream/50">
@@ -555,13 +606,16 @@ function Index() {
               { label: "Services", target: "#services" },
               { label: "About", target: "#about" },
               { label: "Gallery", target: "#gallery" },
-              { label: "Contact", target: "#plan-event" },
+              { label: "Contact", target: "#contact" },
             ].map(({ label, target }, i) => (
               <a
                 key={label}
                 href={target}
-                onClick={() => setMenuOpen(false)}
-                className="group flex items-center justify-between rounded-xl px-4 py-3 font-display text-lg text-brand-cream/90 transition hover:bg-brand-cream/5 hover:text-brand-gold"
+                onClick={(e) => {
+                  setMenuOpen(false);
+                  handleNavClick(e, target);
+                }}
+                className="group flex items-center justify-between rounded-xl px-4 py-3 font-display text-lg text-brand-cream/90 transition hover:bg-brand-cream/5 hover:text-brand-gold cursor-pointer"
               >
                 <span className="flex items-center gap-3">
                   <span className="w-5 text-[10px] font-sans tracking-widest text-brand-gold/70">
