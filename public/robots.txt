@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://happyeventskarur.netlify.app/sitemap.xml
+Sitemap: https://happyeventskarur.netlify.app/sitemap_index.xml
+Sitemap: https://happyeventskarur.netlify.app/sitemap-1.xml
